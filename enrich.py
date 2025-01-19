@@ -50,6 +50,8 @@ def get_company_info(company_name, description):
 
         # Access the first choice's content
         response_content = response.choices[0].message.content  # Correct attribute-based access
+        # Clean up response content for strict JSON parsing
+        response_content = response_content.strip("```json").strip("```")
 
         # Safely parse the JSON response
         try:
